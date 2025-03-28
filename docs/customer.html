@@ -1,1 +1,428 @@
- 
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电力交易平台 - 客户管理</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .main-content {
+            padding: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .nav-link {
+            color: #333;
+            padding: 8px 16px;
+        }
+        .nav-link:hover {
+            background-color: #e9ecef;
+        }
+        .submenu {
+            padding-left: 20px;
+        }
+        .submenu .nav-link {
+            font-size: 0.9rem;
+            padding: 5px 16px;
+        }
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- 侧边栏 -->
+            <div class="col-md-2 sidebar">
+                <h3 class="mb-4">电力交易平台</h3>
+                <div class="nav flex-column">
+                    <a href="index.html" class="nav-link">首页</a>
+                    <a href="#customer" class="nav-link active" onclick="toggleSubmenu('customer-submenu')">客户管理</a>
+                    <div id="customer-submenu" class="submenu" style="display:block;">
+                        <a href="#customer-profile" class="nav-link active" onclick="showPage('customer-profile')">客户档案</a>
+                        <a href="#customer-usage" class="nav-link" onclick="showPage('customer-usage')">用电行为分析</a>
+                        <a href="#customer-contract" class="nav-link" onclick="showPage('customer-contract')">合同管理</a>
+                    </div>
+                    <a href="#" class="nav-link">合同计费</a>
+                    <a href="#" class="nav-link">能源数据</a>
+                    <a href="#" class="nav-link">交易运营</a>
+                    <a href="#" class="nav-link">风险管理</a>
+                    <a href="#" class="nav-link">财务结算</a>
+                </div>
+            </div>
+
+            <!-- 主要内容区 -->
+            <div class="col-md-10 main-content">
+                <!-- 客户档案页面 -->
+                <div id="customer-profile" class="page active">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h2>客户档案</h2>
+                            <p class="text-muted">管理客户基本信息和联系方式</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="搜索客户...">
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <button class="btn btn-primary">新增客户</button>
+                                    <button class="btn btn-outline-secondary ms-2">导出数据</button>
+                                </div>
+                            </div>
+                            
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>客户名称</th>
+                                        <th>客户类型</th>
+                                        <th>行业</th>
+                                        <th>联系人</th>
+                                        <th>电话</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>江苏新能源科技有限公司</td>
+                                        <td>工业用户</td>
+                                        <td>制造业</td>
+                                        <td>张经理</td>
+                                        <td>13876543210</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">详情</button>
+                                            <button class="btn btn-sm btn-outline-secondary">编辑</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>华通数据中心</td>
+                                        <td>商业用户</td>
+                                        <td>IT服务</td>
+                                        <td>李总监</td>
+                                        <td>13987654321</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">详情</button>
+                                            <button class="btn btn-sm btn-outline-secondary">编辑</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>星河购物中心</td>
+                                        <td>商业用户</td>
+                                        <td>零售</td>
+                                        <td>王经理</td>
+                                        <td>13765432109</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">详情</button>
+                                            <button class="btn btn-sm btn-outline-secondary">编辑</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 用电行为分析页面 -->
+                <div id="customer-usage" class="page">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h2>用电行为分析</h2>
+                            <p class="text-muted">分析客户用电模式和优化建议</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">客户选择</h5>
+                                    <select class="form-select mb-3">
+                                        <option selected>选择客户</option>
+                                        <option>江苏新能源科技有限公司</option>
+                                        <option>华通数据中心</option>
+                                        <option>星河购物中心</option>
+                                    </select>
+                                    <h6>客户基本信息</h6>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <span>客户类型：</span>
+                                            <span>工业用户</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <span>合同容量：</span>
+                                            <span>2000kW</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between">
+                                            <span>年用电量：</span>
+                                            <span>1,482,000kWh</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">用电负荷特征</h5>
+                                    <div class="btn-group mb-3">
+                                        <button class="btn btn-outline-primary active">日负荷</button>
+                                        <button class="btn btn-outline-primary">周负荷</button>
+                                        <button class="btn btn-outline-primary">月负荷</button>
+                                        <button class="btn btn-outline-primary">季节对比</button>
+                                    </div>
+                                    <div style="height: 300px; background-color: #f8f9fa; border-radius: 4px;">
+                                        [负荷曲线图表]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">用电指标</h5>
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>平均负荷率</td>
+                                                <td>65.3%</td>
+                                                <td><span class="text-warning">中等</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>峰谷差率</td>
+                                                <td>42.8%</td>
+                                                <td><span class="text-danger">较高</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>最大需量</td>
+                                                <td>1875kW</td>
+                                                <td><span class="text-success">良好</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>电费单价</td>
+                                                <td>0.86元/kWh</td>
+                                                <td><span class="text-warning">中等</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">优化建议</h5>
+                                    <div class="alert alert-primary">
+                                        <h6>峰谷电价优化</h6>
+                                        <p>建议将部分生产工序调整至谷期，预计可节约电费5.2%</p>
+                                    </div>
+                                    <div class="alert alert-success">
+                                        <h6>合同容量优化</h6>
+                                        <p>根据用电特性，建议将合同容量调整至1900kW，预计年节约基本电费3.8万元</p>
+                                    </div>
+                                    <div class="alert alert-warning">
+                                        <h6>需求响应潜力</h6>
+                                        <p>可参与电网需求响应项目，每年可创收约4.5万元</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 合同管理页面 -->
+                <div id="customer-contract" class="page">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <h2>合同管理</h2>
+                            <p class="text-muted">管理客户电力供应合同</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="搜索合同...">
+                                </div>
+                                <div class="col-md-6 text-end">
+                                    <button class="btn btn-primary">新增合同</button>
+                                    <button class="btn btn-outline-secondary ms-2">导出数据</button>
+                                </div>
+                            </div>
+                            
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>合同编号</th>
+                                        <th>客户名称</th>
+                                        <th>合同类型</th>
+                                        <th>签约日期</th>
+                                        <th>到期日期</th>
+                                        <th>合同状态</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CT-2025-0042</td>
+                                        <td>江苏新能源科技有限公司</td>
+                                        <td>直供电合同</td>
+                                        <td>2025-01-15</td>
+                                        <td>2026-01-14</td>
+                                        <td><span class="badge bg-success">有效</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">详情</button>
+                                            <button class="btn btn-sm btn-outline-secondary">续签</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CT-2024-0185</td>
+                                        <td>华通数据中心</td>
+                                        <td>电力零售合同</td>
+                                        <td>2024-08-01</td>
+                                        <td>2025-07-31</td>
+                                        <td><span class="badge bg-success">有效</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">详情</button>
+                                            <button class="btn btn-sm btn-outline-secondary">续签</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CT-2024-0036</td>
+                                        <td>星河购物中心</td>
+                                        <td>直供电合同</td>
+                                        <td>2024-03-10</td>
+                                        <td>2025-03-09</td>
+                                        <td><span class="badge bg-warning text-dark">即将到期</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary">详情</button>
+                                            <button class="btn btn-sm btn-outline-secondary">续签</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled"><a class="page-link" href="#">上一页</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">合同状态统计</h5>
+                                    <div style="height: 200px; background-color: #f8f9fa; border-radius: 4px;">
+                                        [饼图：合同状态分布]
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">即将到期合同</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            星河购物中心
+                                            <span class="badge bg-warning text-dark rounded-pill">30天内</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            南京市第三医院
+                                            <span class="badge bg-warning text-dark rounded-pill">45天内</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            东方机械制造厂
+                                            <span class="badge bg-info rounded-pill">60天内</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">合同执行情况</h5>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">正常执行 78%</div>
+                                    </div>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">存在波动 15%</div>
+                                    </div>
+                                    <div class="progress mb-3">
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 7%" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100">异常执行 7%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleSubmenu(id) {
+            var submenu = document.getElementById(id);
+            if (submenu.style.display === "none") {
+                submenu.style.display = "block";
+            } else {
+                submenu.style.display = "none";
+            }
+        }
+        
+        function showPage(pageId) {
+            // 隐藏所有页面
+            var pages = document.getElementsByClassName('page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            
+            // 显示选中的页面
+            document.getElementById(pageId).classList.add('active');
+            
+            // 更新导航激活状态
+            var navLinks = document.getElementsByClassName('nav-link');
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].classList.remove('active');
+                if (navLinks[i].getAttribute('href') === '#' + pageId) {
+                    navLinks[i].classList.add('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html> 
