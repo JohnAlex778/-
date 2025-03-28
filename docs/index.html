@@ -24,6 +24,14 @@
         .nav-link:hover {
             background-color: #e9ecef;
         }
+        .submenu {
+            padding-left: 20px;
+            display: none;
+        }
+        .submenu .nav-link {
+            font-size: 0.9rem;
+            padding: 5px 16px;
+        }
     </style>
 </head>
 <body>
@@ -34,12 +42,49 @@
                 <h3 class="mb-4">电力交易平台</h3>
                 <div class="nav flex-column">
                     <a href="#" class="nav-link active">首页</a>
-                    <a href="customer.html" class="nav-link">客户管理</a>
-                    <a href="#" class="nav-link">合同计费</a>
-                    <a href="#" class="nav-link">能源数据</a>
-                    <a href="#" class="nav-link">交易运营</a>
-                    <a href="#" class="nav-link">风险管理</a>
-                    <a href="#" class="nav-link">财务结算</a>
+                    
+                    <a href="#" class="nav-link" onclick="toggleSubmenu('customer-submenu')">客户管理</a>
+                    <div id="customer-submenu" class="submenu">
+                        <a href="customer.html#customer-profile" class="nav-link">客户档案</a>
+                        <a href="customer.html#customer-usage" class="nav-link">用电行为分析</a>
+                        <a href="customer.html#customer-contract" class="nav-link">合同管理</a>
+                    </div>
+                    
+                    <a href="#" class="nav-link" onclick="toggleSubmenu('contract-billing-submenu')">合同计费</a>
+                    <div id="contract-billing-submenu" class="submenu">
+                        <a href="contract-billing.html#contract-signing" class="nav-link">合同签订</a>
+                        <a href="contract-billing.html#billing-rules" class="nav-link">计费规则</a>
+                        <a href="contract-billing.html#electricity-settlement" class="nav-link">电费结算</a>
+                    </div>
+                    
+                    <a href="#" class="nav-link" onclick="toggleSubmenu('energy-data-submenu')">能源数据</a>
+                    <div id="energy-data-submenu" class="submenu">
+                        <a href="energy-data.html#load-forecast" class="nav-link">电力负荷预测</a>
+                        <a href="energy-data.html#data-visualization" class="nav-link">数据可视化</a>
+                        <a href="energy-data.html#generation-forecast" class="nav-link">发电预测</a>
+                        <a href="energy-data.html#demand-response" class="nav-link">需求侧响应</a>
+                    </div>
+                    
+                    <a href="#" class="nav-link" onclick="toggleSubmenu('trading-ops-submenu')">交易运营</a>
+                    <div id="trading-ops-submenu" class="submenu">
+                        <a href="trading-ops.html#purchase-plan" class="nav-link">购电计划</a>
+                        <a href="trading-ops.html#market-bidding" class="nav-link">市场竞价</a>
+                        <a href="trading-ops.html#trading-strategy" class="nav-link">交易策略优化</a>
+                    </div>
+                    
+                    <a href="#" class="nav-link" onclick="toggleSubmenu('risk-mgmt-submenu')">风险管理</a>
+                    <div id="risk-mgmt-submenu" class="submenu">
+                        <a href="risk-management.html#credit-assessment" class="nav-link">信用评估</a>
+                        <a href="risk-management.html#deviation-assessment" class="nav-link">偏差考核</a>
+                        <a href="risk-management.html#risk-warning" class="nav-link">风险预警</a>
+                    </div>
+                    
+                    <a href="#" class="nav-link" onclick="toggleSubmenu('finance-submenu')">财务结算</a>
+                    <div id="finance-submenu" class="submenu">
+                        <a href="finance.html#electricity-finance" class="nav-link">电费收支</a>
+                        <a href="finance.html#bill-management" class="nav-link">账单管理</a>
+                        <a href="finance.html#cost-control" class="nav-link">成本控制</a>
+                    </div>
                 </div>
             </div>
 
@@ -150,5 +195,15 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleSubmenu(id) {
+            var submenu = document.getElementById(id);
+            if (submenu.style.display === "none" || submenu.style.display === "") {
+                submenu.style.display = "block";
+            } else {
+                submenu.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html> 
